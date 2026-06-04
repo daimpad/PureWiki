@@ -3,7 +3,7 @@
 # ----------------------------------------------------------------------
 
 # URL Rewriting (PHP Router)
-Options +FollowSymLinks -MultiViews
+Options +SymLinksIfOwnerMatch -MultiViews
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
