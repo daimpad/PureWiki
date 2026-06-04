@@ -12,7 +12,7 @@
 /* ── CI Design Tokens ───────────────────────────────────────────────────── */
 :root,
 html[data-theme="light"] {
-    --nz-bg:         #FFFEE5;
+    --nz-bg:         #FFFFFF;
     --nz-ink:        #000000;
     --nz-green:      #00FF9C;
     --nz-muted:      #555555;
@@ -1106,4 +1106,47 @@ hr {
 .pw-lang-select {
     padding: 0.25rem 0.5rem;
     margin-bottom: 0;
+}
+
+/* ── Site Footer ─────────────────────────────────────────────────────────── */
+.nz-site-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 1rem 0 0.5rem;
+    border-top: 2px solid var(--nz-ink);
+    margin-top: 1rem;
+}
+
+.nz-footer-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nz-footer-links a,
+.nz-footer-brand {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--nz-ink);
+    text-decoration: none;
+}
+
+.nz-footer-links a:hover,
+.nz-footer-brand:hover {
+    background: var(--nz-green);
+    text-decoration: none;
+}
+
+.nz-footer-brand {
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 12px;
 }

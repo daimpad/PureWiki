@@ -13,8 +13,8 @@
 html[data-theme="light"],
 html:not([data-theme]) {
     --pw-font:          'Inter', system-ui, sans-serif;
-    --pw-bg:            #FFFEE5;
-    --pw-bg-panel:      #FFFEE5;
+    --pw-bg:            #FFFFFF;
+    --pw-bg-panel:      #FFFFFF;
     --pw-text:          #000000;
     --pw-text-muted:    #555555;
     --pw-border:        #000000;
@@ -27,8 +27,8 @@ html:not([data-theme]) {
     --pw-danger-hover:  #8a0000;
     --pw-btn-hover:     #00FF9C;
     --pw-btn-active:    #00FF9C;
-    --pw-input-bg:      #FFFEE5;
-    --pw-sidebar-bg:    #FFFEE5;
+    --pw-input-bg:      #FFFFFF;
+    --pw-sidebar-bg:    #FFFFFF;
     --pw-tree-hover:    #00FF9C;
     --pw-tree-active-bg:#00FF9C;
     --pw-pagepicker-hover: rgba(0,255,156,0.25);
@@ -136,7 +136,7 @@ input:focus, select:focus, textarea:focus {
 /* ── Header ─────────────────────────────────────────────────────────────── */
 .pw-dashboard-header {
     border-bottom: 2px solid #000000 !important;
-    background: #FFFEE5 !important;
+    background: #FFFFFF !important;
 }
 
 /* ── Panels & Cards ─────────────────────────────────────────────────────── */
@@ -150,7 +150,7 @@ input:focus, select:focus, textarea:focus {
 /* ── Tables ─────────────────────────────────────────────────────────────── */
 th {
     background: #000000 !important;
-    color: #FFFEE5 !important;
+    color: #FFFFFF !important;
     border: 1.5px solid #000000 !important;
 }
 
