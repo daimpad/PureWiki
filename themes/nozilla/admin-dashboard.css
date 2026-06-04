@@ -1,7 +1,7 @@
 /**
  * Nozilla CI — Admin Dashboard Override
  *
- * Paste into: PureWiki Admin → Einstellungen → Anpassung → Custom CSS
+ * Load via: purewiki/admin/layout_head.php (after core.css)
  * Applies to: Admin dashboard (light mode).
  * Does NOT touch core PHP files — update-safe.
  */
@@ -9,35 +9,39 @@
 /* ── Google Fonts ──────────────────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Mono:wght@700&family=Zilla+Slab:wght@700&display=swap');
 
-/* ── CI Tokens (light / dashboard) ────────────────────────────────────── */
+/* ── CI Tokens ─────────────────────────────────────────────────────────── */
 html[data-theme="light"],
 html:not([data-theme]) {
-    --pw-font:          'Inter', system-ui, sans-serif;
-    --pw-bg:            #FFFFFF;
-    --pw-bg-panel:      #FFFFFF;
-    --pw-text:          #000000;
-    --pw-text-muted:    #555555;
-    --pw-border:        #000000;
-    --pw-border-focus:  #000000;
-    --pw-primary:       #000000;
-    --pw-primary-hover: #000000;
-    --pw-success:       #007a3d;
-    --pw-warning:       #8B6000;
-    --pw-danger:        #B30000;
-    --pw-danger-hover:  #8a0000;
-    --pw-btn-hover:     #00FF9C;
-    --pw-btn-active:    #00FF9C;
-    --pw-input-bg:      #FFFFFF;
-    --pw-sidebar-bg:    #FFFFFF;
-    --pw-tree-hover:    #00FF9C;
-    --pw-tree-active-bg:#00FF9C;
-    --pw-pagepicker-hover: rgba(0,255,156,0.25);
-    --pw-dialog-shadow: rgba(0,0,0,0.3);
+    --pw-font:              'Inter', system-ui, sans-serif;
+    --pw-bg:                #FFFFFF;
+    --pw-bg-panel:          #FFFFFF;
+    --pw-text:              #000000;
+    --pw-text-muted:        #555555;
+    --pw-border:            #000000;
+    --pw-border-focus:      #000000;
+    --pw-primary:           #000000;
+    --pw-primary-hover:     #000000;
+    --pw-success:           #007a3d;
+    --pw-warning:           #8B6000;
+    --pw-danger:            #B30000;
+    --pw-danger-hover:      #8a0000;
+    --pw-btn-hover:         #00FF9C;
+    --pw-btn-active:        #00FF9C;
+    --pw-input-bg:          #FFFFFF;
+    --pw-sidebar-bg:        #FFFFFF;
+    --pw-tree-hover:        #00FF9C;
+    --pw-tree-active-bg:    #00FF9C;
+    --pw-pagepicker-hover:  rgba(0,255,156,0.25);
+    --pw-dialog-shadow:     rgba(0,0,0,0.3);
+}
+
+/* ── Zero Border-Radius everywhere ────────────────────────────────────── */
+*, *::before, *::after {
+    border-radius: 0 !important;
 }
 
 /* ── Typography ────────────────────────────────────────────────────────── */
-body,
-.pw-dashboard-body {
+body, .pw-dashboard-body {
     font-family: 'Inter', system-ui, sans-serif !important;
     font-size: 17px !important;
     line-height: 1.55 !important;
@@ -51,12 +55,7 @@ h1, h2, h3, h4, h5, h6,
     font-weight: 700 !important;
 }
 
-label,
-th,
-.pw-btn,
-.pw-setting-label,
-.pw-nav-item span,
-.pw-badge {
+label, th, .pw-btn, .pw-setting-label, .pw-nav-item span, .pw-badge {
     font-family: 'Space Mono', monospace !important;
     font-weight: 700 !important;
     font-size: 11px !important;
@@ -64,14 +63,42 @@ th,
     letter-spacing: 0.12em !important;
 }
 
-/* ── Zero Border-Radius ────────────────────────────────────────────────── */
-*,
-*::before,
-*::after {
-    border-radius: 0 !important;
+/* ── Remove ALL decorative lines ──────────────────────────────────────── */
+hr,
+.pw-separator,
+.pw-settings-panel > hr,
+[class*="pw-"] hr {
+    display: none !important;
 }
 
-/* ── Buttons — Signal-Grün für Primary/CTA ─────────────────────────────── */
+/* Table: no row lines, only outer border on th */
+td {
+    border: none !important;
+    border-bottom: none !important;
+}
+
+tr {
+    border: none !important;
+    border-bottom: none !important;
+}
+
+/* Remove any bottom/top borders used as dividers */
+.pw-setting-field,
+.pw-settings-tab > *,
+.pw-accordion-item,
+[class*="pw-list"] li,
+.pw-nav-section {
+    border-bottom: none !important;
+    border-top: none !important;
+}
+
+/* Sidebar: no divider lines between nav groups */
+.pw-nav-section-title,
+.pw-nav-divider {
+    border: none !important;
+}
+
+/* ── Buttons — Signal-Grün for Primary/CTA ────────────────────────────── */
 .pw-btn-primary,
 button[type="submit"] {
     background: #00FF9C !important;
@@ -83,7 +110,6 @@ button[type="submit"] {
 
 .pw-btn-primary:hover,
 button[type="submit"]:hover {
-    background: #00FF9C !important;
     box-shadow: 3px 3px 0 0 #000000 !important;
     transform: translate(3px, 3px) !important;
 }
@@ -91,11 +117,12 @@ button[type="submit"]:hover {
 .pw-btn:not(.pw-btn-primary):not(.pw-btn-danger):not([type="submit"]) {
     border: 2px solid #000000 !important;
     box-shadow: 3px 3px 0 0 #000000 !important;
+    background: #FFFFFF !important;
+    color: #000000 !important;
 }
 
 .pw-btn:not(.pw-btn-primary):not(.pw-btn-danger):not([type="submit"]):hover {
     background: #00FF9C !important;
-    color: #000000 !important;
     box-shadow: none !important;
     transform: translate(3px, 3px) !important;
 }
@@ -117,7 +144,7 @@ input:focus, select:focus, textarea:focus {
     outline: none !important;
 }
 
-/* ── Sidebar ────────────────────────────────────────────────────────────── */
+/* ── Sidebar ─────────────────────────────────────────────────────────────── */
 .pw-dashboard-sidebar {
     border-right: 2px solid #000000 !important;
 }
@@ -133,13 +160,13 @@ input:focus, select:focus, textarea:focus {
     color: #000000 !important;
 }
 
-/* ── Header ─────────────────────────────────────────────────────────────── */
+/* ── Header ──────────────────────────────────────────────────────────────── */
 .pw-dashboard-header {
     border-bottom: 2px solid #000000 !important;
     background: #FFFFFF !important;
 }
 
-/* ── Panels & Cards ─────────────────────────────────────────────────────── */
+/* ── Panels & Cards: border + shadow, no inner lines ─────────────────────── */
 .pw-settings-panel,
 .pw-card,
 [class*="pw-panel"] {
@@ -147,34 +174,23 @@ input:focus, select:focus, textarea:focus {
     box-shadow: 6px 6px 0 0 #000000 !important;
 }
 
-/* ── Tables ─────────────────────────────────────────────────────────────── */
+/* ── Tables: header row only, no cell lines ──────────────────────────────── */
 th {
     background: #000000 !important;
     color: #FFFFFF !important;
-    border: 1.5px solid #000000 !important;
+    border: none !important;
 }
 
-td {
-    border: 1.5px solid #000000 !important;
-}
-
-/* ── Active / Focus accent → Signal-Grün ───────────────────────────────── */
+/* ── Links ───────────────────────────────────────────────────────────────── */
 a {
     color: #000000 !important;
 }
 
 a:hover {
-    color: #000000 !important;
     text-decoration: underline !important;
 }
 
+/* ── Scrollbar ───────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar-thumb {
     background: #000000 !important;
-    border-radius: 0 !important;
-}
-
-/* ── HR & Separators ────────────────────────────────────────────────────── */
-hr, .pw-separator {
-    border-color: #000000 !important;
-    border-width: 2px !important;
 }
