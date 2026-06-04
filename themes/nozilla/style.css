@@ -1108,6 +1108,54 @@ hr {
     margin-bottom: 0;
 }
 
+/* ── Admin Menu (floating editor toolbar) ────────────────────────────────── */
+.pw-admin-menu {
+    background: var(--nz-bg) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 2px solid var(--nz-ink) !important;
+    border-radius: 0 !important;
+    box-shadow: var(--nz-shadow) !important;
+    padding: 8px !important;
+}
+
+.pw-admin-menu:hover {
+    box-shadow: var(--nz-shadow-sm) !important;
+}
+
+.pw-admin-menu-item {
+    border-radius: 0 !important;
+    border: 1.5px solid transparent !important;
+    background: transparent !important;
+    color: var(--nz-ink) !important;
+    transition: background 0.1s !important;
+}
+
+.pw-admin-menu-item:hover {
+    background: var(--nz-green) !important;
+    color: var(--nz-ink) !important;
+    transform: none !important;
+    border-color: var(--nz-ink) !important;
+}
+
+.pw-admin-menu-item::after {
+    border-radius: 0 !important;
+    background: var(--nz-ink) !important;
+    color: var(--nz-bg) !important;
+    border: none !important;
+    font-family: 'Space Mono', monospace !important;
+    font-size: 10px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    box-shadow: var(--nz-shadow-sm) !important;
+}
+
+.pw-admin-menu-drag-handle {
+    border-radius: 0 !important;
+    background: var(--nz-ink) !important;
+    height: 2px !important;
+}
+
 /* ── Site Footer ─────────────────────────────────────────────────────────── */
 .nz-site-footer {
     display: flex;
@@ -1149,4 +1197,141 @@ hr {
     text-transform: none;
     letter-spacing: 0;
     font-size: 12px;
+}
+
+/* ── Home Layout ─────────────────────────────────────────────────────────── */
+.nz-home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.nz-home-hero {
+    padding-top: clamp(4rem, 10vw, 8rem);
+    padding-bottom: clamp(2rem, 5vw, 4rem);
+    border-bottom: 2px solid var(--nz-ink);
+}
+
+.nz-home-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--nz-muted);
+    margin-bottom: 1rem;
+}
+
+.nz-home-headline {
+    font-family: 'Zilla Slab', Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    line-height: 1.05;
+    margin: 0;
+    color: var(--nz-ink);
+}
+
+.nz-home-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: calc(var(--pico-spacing) * 1.5);
+    padding-top: clamp(2rem, 5vw, 4rem);
+    padding-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.nz-tile {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    border: 2px solid var(--nz-ink);
+    box-shadow: var(--nz-shadow);
+    text-decoration: none !important;
+    color: var(--nz-ink);
+    background: var(--nz-bg);
+    transition: box-shadow 0.1s, transform 0.1s;
+}
+
+.nz-tile:hover {
+    box-shadow: none;
+    transform: translate(6px, 6px);
+    text-decoration: none !important;
+}
+
+.nz-tile--primary {
+    background: var(--nz-green);
+}
+
+.nz-tile-icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border: 2px solid var(--nz-ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--nz-bg);
+}
+
+.nz-tile--primary .nz-tile-icon {
+    background: var(--nz-ink);
+    color: var(--nz-green);
+}
+
+.nz-tile-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.nz-tile-label {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--nz-muted);
+}
+
+.nz-tile--primary .nz-tile-label {
+    color: var(--nz-ink);
+}
+
+.nz-tile-title {
+    font-family: 'Zilla Slab', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.1;
+    color: var(--nz-ink);
+}
+
+.nz-tile-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: var(--nz-muted);
+    line-height: 1.4;
+}
+
+.nz-tile--primary .nz-tile-desc {
+    color: var(--nz-ink);
+}
+
+.nz-tile-arrow {
+    flex-shrink: 0;
+    color: var(--nz-ink);
+    opacity: 0.4;
+    transition: opacity 0.1s, transform 0.1s;
+}
+
+.nz-tile:hover .nz-tile-arrow {
+    opacity: 1;
+    transform: translateX(4px);
+}
+
+@media (max-width: 600px) {
+    .nz-home-tiles {
+        grid-template-columns: 1fr;
+    }
 }
