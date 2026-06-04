@@ -32,6 +32,7 @@ if (!isset($pageTitle)) {
     <meta name="csrf-token" content="<?php echo htmlspecialchars(getCsrfToken(), ENT_QUOTES, 'UTF-8'); ?>">
     <title><?php echo htmlspecialchars($pageTitle); ?></title>
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/purewiki/assets/css/core.css">
+    <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/themes/nozilla/admin-dashboard.css">
 <?php
 if (!isset($skipNotifyCss) || !$skipNotifyCss) {
     echo '    <link rel="stylesheet" href="' . BASE_PATH . '/purewiki/assets/css/notify.css">' . "\n";
