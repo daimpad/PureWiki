@@ -1,8 +1,15 @@
-# Application data
+# Application data (private — never committed).
+# Ignore directory contents but NOT the directories themselves, so the
+# protective .htaccess files inside each dir can still be tracked.
+/pages/*
+!/pages/.htaccess
+/config/*
+!/config/.htaccess
+/cache/*
+!/cache/.htaccess
+/backups/*
+!/backups/.htaccess
 /Backups/
-/cache/
-/pages/
-/config/
 
 # Themes (only track default theme)
 /themes/*
