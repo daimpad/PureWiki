@@ -11,9 +11,10 @@
 !/backups/.htaccess
 /Backups/
 
-# Themes (only track default theme)
+# Themes (track default + nozilla CI theme)
 /themes/*
 !/themes/default/
+!/themes/nozilla/
 
 # Extensions
 /extensions/*
