@@ -14,7 +14,7 @@
 /* ── Fonts — sibling file; its own url()s resolve against themes/nozilla/ ── */
 @import url("fonts.css");
 
-/* ── Primitives ─────────────────────────────────────────────────────────── */
+/* ── Primitives ────────────────────────────────────────────────────────── */
 :root {
   --nz-c-green:        #00FF9C;
   --nz-c-green-strong: #00E88D;
@@ -41,7 +41,7 @@
   --nz-ease: cubic-bezier(.2, 0, 0, 1);
 }
 
-/* ── Light — white canvas ──────────────────────────────────────────────── */
+/* ── Light — white canvas ────────────────────────────────────────────── */
 html[data-theme="light"] {
   --nz-bg:           #FFFFFF;
   --nz-surface:      #FFFFFF;
@@ -150,7 +150,7 @@ label, th, .pw-btn, .pw-setting-label, .pw-nav-item span, .pw-badge {
   letter-spacing: 0.12em !important;
 }
 
-/* ── No decorative lines. Container outlines stay. ──────────────────────── */
+/* ── No decorative lines. Container outlines stay. ─────────────────────── */
 hr,
 .pw-separator,
 [class*="pw-"] hr { display: none !important; }
@@ -252,7 +252,7 @@ input:focus, select:focus, textarea:focus {
   outline: none;
 }
 
-/* ── Sidebar ───────────────────────────────────────────────────────────── */
+/* ── Sidebar ─────────────────────────────────────────────────────────── */
 .pw-dashboard-sidebar { border-right: var(--nz-stroke-rule) solid var(--nz-line) !important; }
 
 .pw-nav-item.active,
@@ -264,13 +264,13 @@ input:focus, select:focus, textarea:focus {
 .pw-nav-item.active *,
 .pw-nav-item:hover * { color: var(--nz-on-signal) !important; }
 
-/* ── Header ────────────────────────────────────────────────────────────── */
+/* ── Header ─────────────────────────────────────────────────────────── */
 .pw-dashboard-header {
   border-bottom: var(--nz-stroke-rule) solid var(--nz-line) !important;
   background: var(--nz-bg) !important;
 }
 
-/* ── Panels & cards ───────────────────────────────────────────────────── */
+/* ── Panels & cards ──────────────────────────────────────────────── */
 .pw-settings-panel,
 .pw-card,
 [class*="pw-panel"] {
@@ -279,23 +279,108 @@ input:focus, select:focus, textarea:focus {
   box-shadow: var(--nz-shadow-md) !important;
 }
 
-/* ── Tables — header row only ──────────────────────────────────────────── */
+/* ── Tables — header row only ───────────────────────────────────────── */
 th {
   background: var(--nz-line) !important;
   color: var(--nz-bg) !important;
   border: none !important;
 }
 
-/* ── Links ─────────────────────────────────────────────────────────────── */
+/* ── Links ──────────────────────────────────────────────────────────── */
 a { color: var(--nz-text) !important; }
 a:hover { text-decoration: underline !important; text-decoration-color: var(--nz-c-green) !important; }
 
-/* ── Green marker ─────────────────────────────────────────────────────── */
+/* ── Green marker ─────────────────────────────────────────────────── */
 mark, mark.g {
   background: var(--nz-c-green) !important;
   color: var(--nz-c-ink) !important;
   padding: 0 .15em;
 }
 
-/* ── Scrollbar ──────────────────────────────────────────────────────── */
+/* ── Scrollbar ─────────────────────────────────────────────── */
 ::-webkit-scrollbar-thumb { background: var(--nz-line) !important; }
+
+/* ── Login ──────────────────────────────────────────────────────────── */
+/* login.php ships its own inline <style> via $extraHead, which layout_head.php
+   prints AFTER this file. Everything that collides with it needs !important. */
+
+.pw-login-wrapper {
+  gap: var(--nz-space-7, 48px) !important;
+  padding: 24px !important;
+}
+
+/* The wordmark moment — Zilla Slab, display scale. */
+.pw-login-title {
+  font-family: var(--nz-font-display) !important;
+  font-weight: 700 !important;
+  font-size: clamp(38px, 7vw, 64px) !important;
+  line-height: 0.95 !important;
+  letter-spacing: -0.025em !important;
+  color: var(--nz-text) !important;
+  text-align: center;
+}
+
+/* Card: border and hard shadow carry it — no fill contrast needed. */
+.pw-login-card {
+  max-width: 380px !important;
+  background: var(--nz-surface) !important;
+  border: var(--nz-stroke-rule) solid var(--nz-line) !important;
+  box-shadow: var(--nz-shadow-md) !important;
+  padding: 32px !important;
+  gap: 24px !important;
+}
+
+.pw-login-field { gap: 8px !important; }
+
+.pw-login-field label {
+  font-family: var(--nz-font-mono) !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: var(--nz-text-muted) !important;
+}
+
+.pw-login-field .pw-input {
+  border: var(--nz-stroke-rule) solid var(--nz-line) !important;
+  padding: 12px 16px !important;
+  font-size: 16px !important;
+}
+
+/* Error: the CI danger colour, heavy left rule like an alert. */
+.pw-login-error {
+  background: rgba(229, 72, 77, .10) !important;
+  border: var(--nz-stroke-rule) solid var(--nz-line) !important;
+  border-left: 4px solid var(--nz-c-danger) !important;
+  color: var(--nz-text) !important;
+  font-family: var(--nz-font-body) !important;
+  font-size: 14px !important;
+  padding: 12px 16px !important;
+}
+
+/* Submit: Signal-Grün with the full press physics. */
+.pw-login-submit {
+  background: var(--nz-c-green) !important;
+  color: var(--nz-on-signal) !important;
+  border: var(--nz-stroke-rule) solid var(--nz-line) !important;
+  box-shadow: 4px 4px 0 0 var(--nz-shadow-color) !important;
+  font-family: var(--nz-font-mono) !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  padding: 16px !important;
+  margin-top: 4px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pw-login-submit:hover {
+    transform: translate(-2px, -2px) !important;
+    box-shadow: 6px 6px 0 0 var(--nz-shadow-color) !important;
+  }
+}
+
+.pw-login-submit:active {
+  transform: translate(4px, 4px) !important;
+  box-shadow: 0 0 0 0 var(--nz-shadow-color) !important;
+}
