@@ -67,27 +67,19 @@ anzufassen.
 
 ## Fonts nachlegen
 
-Die neun `.ttf`-Dateien in `fonts/` sind **nicht** im Repo — sie mussten
-über die GitHub-API übertragen werden, die nur Text akzeptiert. Ohne sie
-fällt die Typografie auf die Fallbacks zurück (Georgia · system-ui · Menlo);
-Farben, Formensprache und Layout bleiben korrekt.
-
-Einmalig nachlegen aus dem CI-Repo:
+Die neun `.ttf`-Dateien sind bewusst **nicht** im Repo — sie liegen
+kanonisch in [nozilla-ci](https://github.com/daimpad/nozilla-ci)
+(`project/fonts/`) und werden beim Deploy hierher kopiert, statt ~1,9 MB
+über zwei Repos zu duplizieren.
 
 ```bash
 git clone --depth 1 https://github.com/daimpad/nozilla-ci /tmp/nz
 cp /tmp/nz/project/fonts/*.ttf themes/nozilla/fonts/
-cp /tmp/nz/project/fonts/OFL.txt themes/nozilla/fonts/
 ```
 
-Oder direkt per FTP aus `nozilla-ci/project/fonts/` nach
-`themes/nozilla/fonts/` auf den Server kopieren. Erwartet werden:
-
-```
-Inter-Regular.ttf     Inter-Medium.ttf   Inter-SemiBold.ttf  Inter-Bold.ttf
-ZillaSlab-Medium.ttf  ZillaSlab-SemiBold.ttf                 ZillaSlab-Bold.ttf
-SpaceMono-Regular.ttf SpaceMono-Bold.ttf                     OFL.txt
-```
+Fehlen sie, greifen die Fallbacks (Georgia · system-ui · Menlo) — Farben,
+Formensprache und Layout bleiben korrekt, nur die Schrift ist nicht die
+der Marke. Details in [`fonts/README.md`](./fonts/README.md).
 
 ## Update-Hinweis
 
