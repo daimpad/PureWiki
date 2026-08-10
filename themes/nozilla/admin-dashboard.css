@@ -1,0 +1,301 @@
+/* ============================================================================
+   nozilla CI — PureWiki Admin Dashboard
+   Loaded from purewiki/admin/layout_head.php, after core.css.
+
+   Token source: github.com/daimpad/nozilla-ci · design-system.css
+   Deviation on record: the dashboard canvas is white, not Papier-Gelb —
+   a neutral work surface by explicit decision. The wiki frontend uses paper.
+
+   PureWiki's own dashboard theme switch drives this:
+     dashboard_theme = light → html[data-theme="light"]  → CI light
+     dashboard_theme = dark  → no attribute              → CI warm dark
+============================================================================ */
+
+/* ── Fonts — sibling file; its own url()s resolve against themes/nozilla/ ── */
+@import url("fonts.css");
+
+/* ── Primitives ─────────────────────────────────────────────────────────── */
+:root {
+  --nz-c-green:        #00FF9C;
+  --nz-c-green-strong: #00E88D;
+  --nz-c-paper:        #FFFEE5;
+  --nz-c-ink:          #000000;
+  --nz-c-ink-900:      #0C0C0A;
+  --nz-c-ink-800:      #17160F;
+  --nz-c-ink-700:      #201F16;
+
+  --nz-c-warn:         #FF5F1F;
+  --nz-c-danger:       #E5484D;
+  --nz-c-info:         #3E7BFA;
+
+  --nz-stroke-hair:   1.5px;
+  --nz-stroke-rule:   2px;
+  --nz-stroke-strong: 3px;
+
+  --nz-font-display: "Zilla Slab", Georgia, serif;
+  --nz-font-body:    "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --nz-font-mono:    "Space Mono", ui-monospace, Menlo, monospace;
+
+  --nz-dur:      160ms;
+  --nz-dur-fast:  90ms;
+  --nz-ease: cubic-bezier(.2, 0, 0, 1);
+}
+
+/* ── Light — white canvas ──────────────────────────────────────────────── */
+html[data-theme="light"] {
+  --nz-bg:           #FFFFFF;
+  --nz-surface:      #FFFFFF;
+  --nz-text:         var(--nz-c-ink);
+  --nz-line:         var(--nz-c-ink);
+  --nz-shadow-color: var(--nz-c-ink);
+  --nz-focus:        var(--nz-c-green-strong);
+  --nz-on-signal:    var(--nz-c-ink);
+
+  --pw-font:             var(--nz-font-body);
+  --pw-bg:               #FFFFFF;
+  --pw-bg-panel:         #FFFFFF;
+  --pw-text:             #000000;
+  --pw-text-muted:       rgba(0, 0, 0, .66);
+  --pw-border:           #000000;
+  --pw-border-focus:     #000000;
+  --pw-primary:          #000000;
+  --pw-primary-hover:    #000000;
+  --pw-success:          #00A867;
+  --pw-warning:          var(--nz-c-warn);
+  --pw-danger:           var(--nz-c-danger);
+  --pw-danger-hover:     #C13A3E;
+  --pw-btn-hover:        var(--nz-c-green);
+  --pw-btn-active:       var(--nz-c-green);
+  --pw-input-bg:         #FFFFFF;
+  --pw-sidebar-bg:       #FFFFFF;
+  --pw-tree-hover:       var(--nz-c-green);
+  --pw-tree-active-bg:   var(--nz-c-green);
+  --pw-pagepicker-hover: rgba(0, 255, 156, .25);
+  --pw-dialog-shadow:    rgba(0, 0, 0, .3);
+  color-scheme: light;
+}
+
+/* ── Dark — warm near-black, paper text, paper-coloured shadows ────────── */
+html:not([data-theme]),
+html[data-theme="dark"] {
+  --nz-bg:           var(--nz-c-ink-900);
+  --nz-surface:      var(--nz-c-ink-800);
+  --nz-text:         var(--nz-c-paper);
+  --nz-line:         var(--nz-c-paper);
+  --nz-shadow-color: var(--nz-c-paper);
+  --nz-focus:        var(--nz-c-green);
+  --nz-on-signal:    var(--nz-c-ink);
+
+  --pw-font:             var(--nz-font-body);
+  --pw-bg:               var(--nz-c-ink-900);
+  --pw-bg-panel:         var(--nz-c-ink-800);
+  --pw-text:             var(--nz-c-paper);
+  --pw-text-muted:       rgba(255, 254, 229, .64);
+  --pw-border:           var(--nz-c-paper);
+  --pw-border-focus:     var(--nz-c-paper);
+  --pw-primary:          var(--nz-c-paper);
+  --pw-primary-hover:    var(--nz-c-paper);
+  --pw-success:          #00A867;
+  --pw-warning:          var(--nz-c-warn);
+  --pw-danger:           var(--nz-c-danger);
+  --pw-danger-hover:     #C13A3E;
+  --pw-btn-hover:        var(--nz-c-green);
+  --pw-btn-active:       var(--nz-c-green);
+  --pw-input-bg:         var(--nz-c-ink-800);
+  --pw-sidebar-bg:       var(--nz-c-ink-900);
+  --pw-tree-hover:       var(--nz-c-green);
+  --pw-tree-active-bg:   var(--nz-c-green);
+  --pw-pagepicker-hover: rgba(0, 255, 156, .16);
+  --pw-dialog-shadow:    rgba(0, 0, 0, .6);
+  color-scheme: dark;
+}
+
+/* Composed hard shadows */
+:root {
+  --nz-shadow-sm: 3px 3px 0 0 var(--nz-shadow-color);
+  --nz-shadow-md: 6px 6px 0 0 var(--nz-shadow-color);
+  --nz-shadow-lg: 10px 10px 0 0 var(--nz-shadow-color);
+}
+
+/* ── Zero radius — everything except the radio, the one allowed circle ───── */
+*:not([type="radio"]),
+*::before,
+*::after { border-radius: 0 !important; }
+
+input[type="radio"] { border-radius: 50% !important; }
+
+/* ── Typography ─────────────────────────────────────────────────────────── */
+body, .pw-dashboard-body {
+  font-family: var(--nz-font-body) !important;
+  font-size: 17px !important;
+  line-height: 1.55 !important;
+  background: var(--nz-bg) !important;
+  color: var(--nz-text) !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.pw-site-title,
+.pw-settings-heading,
+.pw-settings-subheading {
+  font-family: var(--nz-font-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+}
+
+label, th, .pw-btn, .pw-setting-label, .pw-nav-item span, .pw-badge {
+  font-family: var(--nz-font-mono) !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+}
+
+/* ── No decorative lines. Container outlines stay. ──────────────────────── */
+hr,
+.pw-separator,
+[class*="pw-"] hr { display: none !important; }
+
+td, tr {
+  border: none !important;
+  border-bottom: none !important;
+}
+
+.pw-setting-field,
+.pw-settings-tab > *,
+.pw-accordion-item,
+[class*="pw-list"] li,
+.pw-nav-section,
+.pw-nav-section-title,
+.pw-nav-divider {
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+/* ── Buttons — CI press physics ──────────────────────────────────────────── */
+/* rest → 4px shadow · hover → lifts up/left, shadow grows · active → slams
+   down, shadow collapses. Transform + shadow only, never blur. */
+.pw-btn,
+button[type="submit"] {
+  border: var(--nz-stroke-rule) solid var(--nz-line) !important;
+  box-shadow: 4px 4px 0 0 var(--nz-shadow-color) !important;
+  transition: transform var(--nz-dur-fast) var(--nz-ease),
+              box-shadow var(--nz-dur-fast) var(--nz-ease),
+              background-color var(--nz-dur) var(--nz-ease) !important;
+}
+
+.pw-btn-primary,
+button[type="submit"] {
+  background: var(--nz-c-green) !important;
+  color: var(--nz-on-signal) !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pw-btn:hover,
+  button[type="submit"]:hover {
+    transform: translate(-2px, -2px) !important;
+    box-shadow: 6px 6px 0 0 var(--nz-shadow-color) !important;
+  }
+}
+
+.pw-btn:active,
+button[type="submit"]:active {
+  transform: translate(4px, 4px) !important;
+  box-shadow: 0 0 0 0 var(--nz-shadow-color) !important;
+}
+
+.pw-btn:not(.pw-btn-primary):not(.pw-btn-danger):not([type="submit"]) {
+  background: var(--nz-surface) !important;
+  color: var(--nz-text) !important;
+}
+
+.pw-btn:not(.pw-btn-primary):not(.pw-btn-danger):not([type="submit"]):hover {
+  background: var(--nz-c-green) !important;
+  color: var(--nz-on-signal) !important;
+}
+
+.pw-btn-danger {
+  background: var(--nz-c-danger) !important;
+  color: #FFFFFF !important;
+  box-shadow: 4px 4px 0 0 var(--nz-shadow-color) !important;
+}
+
+.pw-btn:disabled,
+.pw-btn[aria-disabled="true"] {
+  opacity: .45 !important;
+  transform: none !important;
+  box-shadow: 4px 4px 0 0 var(--nz-shadow-color) !important;
+}
+
+/* ── Focus — visible ring everywhere ────────────────────────────────────── */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: var(--nz-stroke-strong) solid var(--nz-focus) !important;
+  outline-offset: 3px !important;
+}
+
+/* ── Inputs ──────────────────────────────────────────────────────────────── */
+input, select, textarea {
+  border: var(--nz-stroke-hair) solid var(--nz-line) !important;
+  background: var(--pw-input-bg) !important;
+  color: var(--nz-text) !important;
+  font-family: var(--nz-font-body) !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--nz-line) !important;
+  box-shadow: var(--nz-shadow-sm) !important;
+  outline: none;
+}
+
+/* ── Sidebar ───────────────────────────────────────────────────────────── */
+.pw-dashboard-sidebar { border-right: var(--nz-stroke-rule) solid var(--nz-line) !important; }
+
+.pw-nav-item.active,
+.pw-nav-item:hover {
+  background: var(--nz-c-green) !important;
+  color: var(--nz-on-signal) !important;
+}
+
+.pw-nav-item.active *,
+.pw-nav-item:hover * { color: var(--nz-on-signal) !important; }
+
+/* ── Header ────────────────────────────────────────────────────────────── */
+.pw-dashboard-header {
+  border-bottom: var(--nz-stroke-rule) solid var(--nz-line) !important;
+  background: var(--nz-bg) !important;
+}
+
+/* ── Panels & cards ───────────────────────────────────────────────────── */
+.pw-settings-panel,
+.pw-card,
+[class*="pw-panel"] {
+  background: var(--nz-surface) !important;
+  border: var(--nz-stroke-rule) solid var(--nz-line) !important;
+  box-shadow: var(--nz-shadow-md) !important;
+}
+
+/* ── Tables — header row only ──────────────────────────────────────────── */
+th {
+  background: var(--nz-line) !important;
+  color: var(--nz-bg) !important;
+  border: none !important;
+}
+
+/* ── Links ─────────────────────────────────────────────────────────────── */
+a { color: var(--nz-text) !important; }
+a:hover { text-decoration: underline !important; text-decoration-color: var(--nz-c-green) !important; }
+
+/* ── Green marker ─────────────────────────────────────────────────────── */
+mark, mark.g {
+  background: var(--nz-c-green) !important;
+  color: var(--nz-c-ink) !important;
+  padding: 0 .15em;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar-thumb { background: var(--nz-line) !important; }

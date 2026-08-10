@@ -16,6 +16,11 @@
 !/themes/default/
 !/themes/nozilla/
 
+# Brand font binaries are not vendored here — they live canonically in
+# github.com/daimpad/nozilla-ci (project/fonts/) and are fetched at deploy
+# time. See themes/nozilla/fonts/README.md for the one-liner.
+/themes/nozilla/fonts/*.ttf
+
 # Extensions
 /extensions/*
 

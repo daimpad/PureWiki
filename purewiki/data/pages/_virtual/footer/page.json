@@ -5,7 +5,7 @@
             "id": "8dP4uXthUX",
             "type": "raw",
             "data": {
-                "html": "<div class=\"pw-footer-content\">\n <span>Last modified: <strong>{{ date_modified }}<\/strong> by <strong>{{ author }}<\/strong><\/span>\n <span>Powered by <a href=\"https:\/\/purewiki.org\">PureWiki<\/a><\/span>\n<\/div>"
+                "html": "<div class=\"pw-footer-content\"><span>Zuletzt geändert: <strong>{{ date_modified }}</strong> von <strong>{{ author }}</strong></span></div>"
             },
             "tunes": {
                 "cssClassTune": {
