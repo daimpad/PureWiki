@@ -12,7 +12,7 @@
         </nav>
     </footer>
     <button id="pw-to-top" class="pw-to-top" aria-label="Nach oben scrollen" title="Nach oben scrollen">
-        <iconify-icon icon="mdi:chevron-up" width="24" height="24"></iconify-icon>
+        <span class="nz-icon nz-icon--up" aria-hidden="true"></span>
     </button>
     {{ assets_footer }}
 </body>

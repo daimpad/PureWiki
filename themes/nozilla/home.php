@@ -1,6 +1,6 @@
 <?php
 /**
- * PureWiki Theme — Nozilla Home Layout
+ * PureWiki Theme — nozilla Home Layout
  *
  * Full-page landing with dashboard/login tiles.
  * Set a page's Layout to "home" to activate this template.
@@ -22,27 +22,27 @@ echo file_get_contents(__DIR__ . '/elements/header.php');
 
     <section class="nz-home-tiles container">
         <a href="<?php echo BASE_PATH; ?>/dashboard" class="nz-tile nz-tile--primary">
-            <div class="nz-tile-icon">
-                <iconify-icon icon="mdi:view-dashboard-outline" width="40" height="40"></iconify-icon>
-            </div>
-            <div class="nz-tile-body">
+            <span class="nz-tile-icon">
+                <span class="nz-icon nz-icon--board" aria-hidden="true"></span>
+            </span>
+            <span class="nz-tile-body">
                 <span class="nz-tile-label">Verwaltung</span>
                 <strong class="nz-tile-title">Dashboard</strong>
                 <span class="nz-tile-desc">Seiten bearbeiten, Einstellungen verwalten.</span>
-            </div>
-            <iconify-icon class="nz-tile-arrow" icon="mdi:arrow-right" width="24" height="24"></iconify-icon>
+            </span>
+            <span class="nz-icon nz-icon--right nz-tile-arrow" aria-hidden="true"></span>
         </a>
 
         <a href="<?php echo BASE_PATH; ?>/dashboard/login" class="nz-tile">
-            <div class="nz-tile-icon">
-                <iconify-icon icon="mdi:login" width="40" height="40"></iconify-icon>
-            </div>
-            <div class="nz-tile-body">
+            <span class="nz-tile-icon">
+                <span class="nz-icon nz-icon--login" aria-hidden="true"></span>
+            </span>
+            <span class="nz-tile-body">
                 <span class="nz-tile-label">Zugang</span>
                 <strong class="nz-tile-title">Anmelden</strong>
                 <span class="nz-tile-desc">Mit deinem Konto einloggen.</span>
-            </div>
-            <iconify-icon class="nz-tile-arrow" icon="mdi:arrow-right" width="24" height="24"></iconify-icon>
+            </span>
+            <span class="nz-icon nz-icon--right nz-tile-arrow" aria-hidden="true"></span>
         </a>
     </section>
 
